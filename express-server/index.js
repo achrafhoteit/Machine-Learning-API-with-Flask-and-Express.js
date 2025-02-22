@@ -2,14 +2,18 @@
 // npm init -y
 // npm install express axios body-parser
 
-const express = require('express')
-const axios = require('axios');
-const bodyParser = require('body-parser')
+// npm install cors (when I used react, I had to add it)
 
-const app = express()
+const express = require('express');
+const axios = require('axios');
+const bodyParser = require('body-parser');
+const cors = require('cors'); // for React to work on a port other than 3000
+
+const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(bodyParser.json())
+app.use(cors());
+app.use(bodyParser.json());
 
 // Route to handle sentiment analysis request
 app.post('/analyze-sentiment', async (req, response) => {
